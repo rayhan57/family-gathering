@@ -7,6 +7,7 @@ import { GrMoney } from "react-icons/gr";
 import ScheduleCard from "@/components/dashboard/ScheduleCard";
 import CanAlreadyBe from "@/components/dashboard/CanAlreadyBe";
 import { getPlayers } from "@/utils/playerApi";
+import { formatToRupiah } from "@/utils/formatCurrency";
 
 const HomePage = async () => {
   const currentDate = new Date().toLocaleDateString("id-ID", {
@@ -30,6 +31,11 @@ const HomePage = async () => {
     (player) => player.paymentStatus === "Belum Lunas",
   );
 
+  const totalSavings = players.reduce(
+    (acc, player) => acc + parseInt(player.savingsAmount.replace(/\D/g, "")),
+    0,
+  );
+
   const infoData = [
     {
       icon: IoCheckmarkDone,
@@ -48,7 +54,7 @@ const HomePage = async () => {
     },
     {
       icon: IoWalletOutline,
-      amount: "Rp. 100.000",
+      amount: `${formatToRupiah(totalSavings.toString())}`,
       description: "Total Tabungan",
     },
   ];

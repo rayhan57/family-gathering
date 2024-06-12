@@ -21,6 +21,7 @@ const PlayerEdit = ({ player, playerId }) => {
     phone: player.phone,
     amount: formatToNumber(player.amount),
     paymentAmount: formatToNumber(player.paymentAmount),
+    savingsAmount: formatToNumber(player.savingsAmount),
     paymentStatus: player.paymentStatus,
     lotteryStatus: player.lotteryStatus,
   });
@@ -28,7 +29,7 @@ const PlayerEdit = ({ player, playerId }) => {
   const handleChange = (e) => {
     let { id, value } = e.target;
 
-    if (id === "amount" || id === "paymentAmount") {
+    if (id === "amount" || id === "paymentAmount" || id === "savingsAmount") {
       value = formatToCurrency(value);
     }
 
@@ -54,6 +55,7 @@ const PlayerEdit = ({ player, playerId }) => {
       ...form,
       amount: formatToRupiah(form.amount),
       paymentAmount: formatToRupiah(form.paymentAmount),
+      savingsAmount: formatToRupiah(form.savingsAmount),
     };
 
     updatePlayerById(playerId, updatePlayer, () => {
@@ -106,6 +108,13 @@ const PlayerEdit = ({ player, playerId }) => {
             label="Jumlah Bayar"
             type="text"
             value={form.paymentAmount}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            id="savingsAmount"
+            label="Jumlah Tabungan"
+            type="text"
+            value={form.savingsAmount}
             onChange={handleChange}
           />
           <DropdownInput

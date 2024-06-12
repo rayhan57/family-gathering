@@ -17,6 +17,7 @@ const AddPlayer = () => {
     phone: "",
     amount: "",
     paymentAmount: "",
+    savingsAmount: "",
     paymentStatus: "Belum Lunas",
     lotteryStatus: "Belum Dapat",
   });
@@ -24,7 +25,7 @@ const AddPlayer = () => {
   const handleChange = (e) => {
     let { id, value } = e.target;
 
-    if (id === "amount" || id === "paymentAmount") {
+    if (id === "amount" || id === "paymentAmount" || id === "savingsAmount") {
       value = formatToCurrency(value);
     }
 
@@ -50,6 +51,7 @@ const AddPlayer = () => {
       ...form,
       amount: formatToRupiah(form.amount),
       paymentAmount: formatToRupiah(form.paymentAmount),
+      savingsAmount: formatToRupiah(form.savingsAmount),
     };
 
     addPlayer(player, () => {
@@ -104,6 +106,13 @@ const AddPlayer = () => {
             label="Jumlah Bayar"
             type="text"
             value={form.paymentAmount}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            id="savingsAmount"
+            label="Jumlah Tabungan"
+            type="text"
+            value={form.savingsAmount}
             onChange={handleChange}
           />
           <DropdownInput
