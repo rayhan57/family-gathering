@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import LotteryHistory from "./LotteryHistory";
 import { addShakeHistory } from "@/utils/shakeHistoryApi";
-import { useRouter } from "next/navigation";
 
 const LotteryControl = ({
   candidates,

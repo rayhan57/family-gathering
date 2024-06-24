@@ -29,17 +29,20 @@ const Lottery = ({ players, shakeHistory }) => {
     amount: "",
     paymentStatus: "",
     paymentAmount: "",
+    savingsAmount: "",
   });
 
   const getLotteryResult = () => {
     const selected = canNotBe.find((player) => player.name === lotteryResult);
-    const { name, phone, paymentStatus, paymentAmount } = selected;
+    const { name, phone, paymentStatus, paymentAmount, savingsAmount } =
+      selected;
     setSelectedPlayer({
       ...selectedPlayer,
       name,
       phone,
       paymentStatus,
       paymentAmount,
+      savingsAmount,
     });
     setSelectedPlayerId(selected.id);
   };

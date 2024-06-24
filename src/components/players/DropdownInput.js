@@ -2,6 +2,9 @@ import React from "react";
 
 const DropdownInput = ({ id, value, onChange, label, options, disabled }) => (
   <div>
+    <label htmlFor={id} className="text-sm lg:text-base">
+      {label}
+    </label>
     <select
       className="mb-3 w-full rounded-lg border border-primary p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50 lg:text-base"
       id={id}
